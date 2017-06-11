@@ -1,2 +1,2 @@
-# mfmfm-pir
-PIR RPI
+mfmfm-pir
+that is, PIR RPI
