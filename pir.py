@@ -33,9 +33,20 @@ if __name__ == "__main__":
 
 	while not connected:
 		try:
+			# this doesn't really connect... 
 			client.connect((conf.HOST, conf.PORT))
+			
+			oscmsg = OSC.OSCMessage()
+			oscmsg.setAddress(conf.MOUNT)
+			oscmsg.append('pir')
+
+			# though, this raises an exception
+			client.send(oscmsg)
+
 			connected = True
 		except Exception as e:
+			print "error connecting to " + conf.HOST
+			print "retrying..."
 			continue
 
 	GPIO.setmode(GPIO.BOARD)
@@ -46,7 +57,7 @@ if __name__ == "__main__":
 	try:
 		while True:
 			if connected:
-				time.sleep(3)
+				time.sleep(1)
 			else:
 				print "connecting... " + HOST
 				client.connect((conf.HOST, conf.PORT))
