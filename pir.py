@@ -22,7 +22,12 @@ def on_transition_cb(channel):
 		msg = OFF
 
 	oscmsg.append(msg)
-	client.send(oscmsg)
+
+	try:
+		client.send(oscmsg)
+	except Exception as e:
+		connected = False
+	
 
 if __name__ == "__main__":
 
@@ -40,10 +45,14 @@ if __name__ == "__main__":
 
 	try:
 		while True:
-			time.sleep(3)
+			if connected:
+				time.sleep(3)
+			else
+				print "connecting... " + HOST
+				client.connect((conf.HOST, conf.PORT))
 	except Exception as e:
 		raise
 	finally:
-		print "clenaing up"
+		print "cleaning up"
 		GPIO.cleanup()
 
