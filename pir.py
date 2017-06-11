@@ -10,7 +10,7 @@ def on_transition_cb(channel):
 
 	if GPIO.input(channel) == 1:
 		print "transition -- ON"
-	else 
+	else:
 		print "transition -- OFF"
 
 if __name__ == "__main__":
