@@ -47,7 +47,7 @@ if __name__ == "__main__":
 		while True:
 			if connected:
 				time.sleep(3)
-			else
+			else:
 				print "connecting... " + HOST
 				client.connect((conf.HOST, conf.PORT))
 	except Exception as e:
