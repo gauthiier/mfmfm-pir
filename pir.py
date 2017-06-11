@@ -26,6 +26,7 @@ def on_transition_cb(channel):
 	try:
 		client.send(oscmsg)
 	except Exception as e:
+		raise
 		connected = False
 	
 
